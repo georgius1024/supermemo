@@ -42,7 +42,8 @@ yarn-error.log
 testem.log
 /typings
 .trash
-
+.vscode
+.editorconfig
 # System Files
 .DS_Store
 Thumbs.db
