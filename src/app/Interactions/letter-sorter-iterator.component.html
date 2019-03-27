@@ -1,0 +1,6 @@
+<div>
+  <app-alert></app-alert>
+  <div style="float: right">{{position + 1}} / {{vocabulary.length}}</div>
+  <app-interaction-letter-sorter [input]="vocabulary[position]" (outcome)="sorted($event)">
+  </app-interaction-letter-sorter>
+</div>

@@ -1,0 +1,8 @@
+{
+  "eslint.autoFixOnSave": false,
+  "eslint.enable": false,
+  "prettier.singleQuote": true,
+  "prettier.tslintIntegration": true,
+  "editor.wordWrapColumn": 140,
+  "files.autoSaveDelay": 0,
+}

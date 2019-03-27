@@ -1,0 +1,23 @@
+<div class="main-container">
+  <header class="header header-6">
+    <div class="branding">
+      <a class="nav-link">
+        <img src="favicon.png" class="logo">
+        <span class="title">
+          Supermemo App
+        </span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <a routerLink="/" class="nav-link nav-text" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">Словарь</a>
+      <a routerLink="/config" class="nav-link nav-text" routerLinkActive="active">Настройка</a>
+    </div>
+  </header>
+  <app-alert></app-alert>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

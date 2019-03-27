@@ -1,0 +1,31 @@
+.letter-sorter {
+  margin: 12px 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  user-select: none;
+  align-items: center;
+  .left-column {
+    flex-grow: 0;
+    padding: 12px 0;
+    font-size: 24px;
+    margin-right: 24px;
+  }
+  .right-column {
+    flex-grow: 0;
+    font-size: 24px;
+    display: flex;
+  }
+  .sortable-item {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #00968B;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 6px;
+    background-color: #00968B
+  }
+}

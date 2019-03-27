@@ -1,0 +1,25 @@
+<form clrForm (ngSubmit)="onSubmit()" *ngIf="words">
+  <div class="h4">
+    Пожалуйста, сопоставьте слова и перевод
+  </div>
+  <div class="match-sorter">
+    <div class="left-column">
+      <ul class="fixed">
+        <li *ngFor="let item of words">
+          {{ item.word }}
+        </li>
+      </ul>
+    </div>
+    <div class="right-column">
+      <ul class="sortable" [sortablejs]="this.randomizedList">
+        <li *ngFor="let item of this.randomizedList">
+          {{ item.translation }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button class="btn btn-primary">
+    Ответить
+  </button>
+
+</form>

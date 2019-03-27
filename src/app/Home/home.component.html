@@ -1,0 +1,53 @@
+<ng-container *ngIf="isReady">
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink id="link1">Слова для изучения <span class="badge">{{readyWords.length}}</span></button>
+      <clr-tab-content id="content1" *clrIfActive="true">
+        <ng-container *ngIf="readyWords.length">
+          <h2>Слова для изучения</h2>
+          <table class="table striped auto-width">
+            <thead>
+              <th>Слово</th>
+              <th>Количество тренировок</th>
+              <th>Количество ошибок</th>
+              <th>Последняя тренировка</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of readyWords">
+                <td>{{ item.word }}</td>
+                <td class="right">{{ item.progress ? item.progress : 0 }} / {{trainingsRequired(item)}}</td>
+                <td class="right">{{ item.errors }}</td>
+                <td class="right">{{ item.last | date:'dd.MM.yyyy'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </ng-container>
+        <button (click)="addWords=true" [disabled]="!canAddWords" class="btn btn-default">
+          Добавить новые слова
+        </button>
+        <button class="btn btn-primary" *ngIf="readyWords.length" (click)="training.start([])"
+          [disabled]="readyWords.length < 2">
+          Начать тренировку
+        </button>
+      </clr-tab-content>
+    </clr-tab>
+    <clr-tab *ngIf="completedWords.length">
+      <button clrTabLink>Изученные слова <span class="badge">{{completedWords.length}}</span></button>
+      <clr-tab-content *clrIfActive>
+        <h2>Изученные слова</h2>
+        <app-training-history></app-training-history>
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
+  <clr-modal [(clrModalOpen)]="addWords">
+    <h3 class="modal-title">Новые слова для изучения</h3>
+    <div class="modal-body">
+      <app-word-selector (select)="addPortion($event)"></app-word-selector>
+    </div>
+  </clr-modal>
+
+  <app-training #training (complete)="traingCompleted()"></app-training>
+</ng-container>
+<ng-container *ngIf="!isReady">
+  <p>Пожалуйста, подождите пока идет загрузка словаря</p>
+</ng-container>

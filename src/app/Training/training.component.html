@@ -1,0 +1,106 @@
+<div class="full-screen" *ngIf="active">
+  <header class="header header-6">
+    <div class="branding">
+      <a class="nav-link">
+        <img src="favicon.png" class="logo">
+        <span class="title">
+          Supermemo App
+        </span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <a class="nav-link nav-text active">Идет тренировка</a>
+    </div>
+  </header>
+  <div class="modal-body">
+    <div class="p6">{{phase + 1}} / 7</div>
+    <ng-container [ngSwitch]="phase">
+      <ng-template [ngSwitchCase]="0">
+        <h3>Сегодняшние слова для тренировки</h3>
+        <p>Прочитайте список внимательно</p>
+      </ng-template>
+      <ng-template [ngSwitchCase]="1">
+        <h3>Разминка</h3>
+      </ng-template>
+      <ng-template [ngSwitchCase]="2">
+        <h3>Перевод на русский</h3>
+      </ng-template>
+      <ng-template [ngSwitchCase]="3">
+        <h3>Перевод на английский</h3>
+      </ng-template>
+      <ng-template [ngSwitchCase]="4">
+        <h3>Правописание</h3>
+        <p>Расставьте буквы в правильном порядке</p>
+
+      </ng-template>
+      <ng-template [ngSwitchCase]="5">
+        Отчет о тренировке
+      </ng-template>
+    </ng-container>
+
+    <div [ngSwitch]="phase">
+      <ng-template [ngSwitchCase]="0">
+        <table class="table striped auto-width">
+          <thead>
+            <tr>
+              <th>Слово</th>
+              <th>Транскрипция</th>
+              <th>Перевод</th>
+              <th>Количество тренировок</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of vocabulary">
+              <td>{{item.word}}</td>
+              <td><code>{{item.transcription}}</code></td>
+              <td>{{item.translation}}</td>
+              <td class="right">{{ item.progress ? item.progress : 0 }} / {{trainingsRequired(item)}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="phase = phase + 1">
+          Продолжить
+        </button>
+      </ng-template>
+      <ng-template [ngSwitchCase]="1">
+        <app-alert></app-alert>
+        <app-interaction-match [words]="vocabulary" (outcome)="completePhase2($event)">
+        </app-interaction-match>
+      </ng-template>
+      <ng-template [ngSwitchCase]="2">
+        <app-interaction-translation-iterator [words]="vocabulary" (complete)="completePhase3($event)">
+        </app-interaction-translation-iterator>
+      </ng-template>
+      <ng-template [ngSwitchCase]="3">
+        <app-interaction-reverse-translation-iterator [words]="vocabulary" (complete)="completePhase4($event)">
+        </app-interaction-reverse-translation-iterator>
+      </ng-template>
+      <ng-template [ngSwitchCase]="4">
+        <app-interaction-letter-sorter-iterator [words]="vocabulary" (complete)="completePhase5($event)">
+        </app-interaction-letter-sorter-iterator>
+      </ng-template>
+      <ng-template [ngSwitchCase]="5">
+        <table class="table striped auto-width">
+          <thead>
+            <th>Слово</th>
+            <th>Количество тренировок</th>
+            <th>Количество ошибок</th>
+            <th>Последняя тренировка</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of vocabulary">
+              <td>{{ item.word }}</td>
+              <td class="right">{{ item.progress ? item.progress : 0 }} / {{trainingsRequired(item)}}</td>
+              <td class="right">{{ item.errors }}</td>
+              <td class="right">{{ item.last | date:'dd.MM.yyyy'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="closeTraining()">
+          Продолжить
+        </button>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
