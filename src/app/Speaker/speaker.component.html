@@ -1,4 +1,4 @@
 <ng-container *ngIf="word">
   <clr-icon shape="volume-up"></clr-icon>
-  <audio [src]="url" autoplay (ended)="shutup()"></audio>
+  <audio [muted]="muted" [src]="url" autoplay (ended)="shutup()"></audio>
 </ng-container>

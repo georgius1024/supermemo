@@ -11,6 +11,11 @@
     <div class="header-nav">
       <a class="nav-link nav-text active">Идет тренировка</a>
     </div>
+    <div class="header-actions">
+      <a href="javascript:void(0)" class="nav-link nav-text">
+        <app-speaker [muted]="true"></app-speaker>
+      </a>
+    </div>
   </header>
   <div class="modal-body">
     <div class="p6">{{ phase + 1 }} / 7</div>
@@ -72,31 +77,19 @@
       </ng-template>
       <ng-template [ngSwitchCase]="1">
         <app-alert></app-alert>
-        <app-interaction-match
-          [words]="vocabulary"
-          (outcome)="completePhase2($event)"
-        >
+        <app-interaction-match [words]="vocabulary" (outcome)="completePhase2($event)">
         </app-interaction-match>
       </ng-template>
       <ng-template [ngSwitchCase]="2">
-        <app-interaction-translation-iterator
-          [words]="vocabulary"
-          (complete)="completePhase3($event)"
-        >
+        <app-interaction-translation-iterator [words]="vocabulary" (complete)="completePhase3($event)">
         </app-interaction-translation-iterator>
       </ng-template>
       <ng-template [ngSwitchCase]="3">
-        <app-interaction-reverse-translation-iterator
-          [words]="vocabulary"
-          (complete)="completePhase4($event)"
-        >
+        <app-interaction-reverse-translation-iterator [words]="vocabulary" (complete)="completePhase4($event)">
         </app-interaction-reverse-translation-iterator>
       </ng-template>
       <ng-template [ngSwitchCase]="4">
-        <app-interaction-letter-sorter-iterator
-          [words]="vocabulary"
-          (complete)="completePhase5($event)"
-        >
+        <app-interaction-letter-sorter-iterator [words]="vocabulary" (complete)="completePhase5($event)">
         </app-interaction-letter-sorter-iterator>
       </ng-template>
       <ng-template [ngSwitchCase]="5">

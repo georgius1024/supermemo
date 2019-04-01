@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SpeakerService } from './speaker.service';
 import { Subscription } from 'rxjs';
 
@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './speaker.component.html',
 })
 export class SpeakerComponent implements OnInit {
+  @Input() muted = false;
   private wordsSource: Subscription;
   public word: string;
   public url: string;
