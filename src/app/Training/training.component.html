@@ -2,7 +2,7 @@
   <header class="header header-6">
     <div class="branding">
       <a class="nav-link">
-        <img src="favicon.png" class="logo">
+        <img src="favicon.png" class="logo" />
         <span class="title">
           Supermemo App
         </span>
@@ -13,7 +13,7 @@
     </div>
   </header>
   <div class="modal-body">
-    <div class="p6">{{phase + 1}} / 7</div>
+    <div class="p6">{{ phase + 1 }} / 7</div>
     <ng-container [ngSwitch]="phase">
       <ng-template [ngSwitchCase]="0">
         <h3>Сегодняшние слова для тренировки</h3>
@@ -50,10 +50,19 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of vocabulary">
-              <td>{{item.word}}</td>
-              <td><code>{{item.transcription}}</code></td>
-              <td>{{item.translation}}</td>
-              <td class="right">{{ item.progress ? item.progress : 0 }} / {{trainingsRequired(item)}}</td>
+              <td>
+                <app-speaker-button class="pull-right" [word]="item.word">
+                </app-speaker-button>
+                {{ item.word }}
+              </td>
+              <td>
+                <code>{{ item.transcription }}</code>
+              </td>
+              <td>{{ item.translation }}</td>
+              <td class="right">
+                {{ item.progress ? item.progress : 0 }} /
+                {{ trainingsRequired(item) }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -63,19 +72,31 @@
       </ng-template>
       <ng-template [ngSwitchCase]="1">
         <app-alert></app-alert>
-        <app-interaction-match [words]="vocabulary" (outcome)="completePhase2($event)">
+        <app-interaction-match
+          [words]="vocabulary"
+          (outcome)="completePhase2($event)"
+        >
         </app-interaction-match>
       </ng-template>
       <ng-template [ngSwitchCase]="2">
-        <app-interaction-translation-iterator [words]="vocabulary" (complete)="completePhase3($event)">
+        <app-interaction-translation-iterator
+          [words]="vocabulary"
+          (complete)="completePhase3($event)"
+        >
         </app-interaction-translation-iterator>
       </ng-template>
       <ng-template [ngSwitchCase]="3">
-        <app-interaction-reverse-translation-iterator [words]="vocabulary" (complete)="completePhase4($event)">
+        <app-interaction-reverse-translation-iterator
+          [words]="vocabulary"
+          (complete)="completePhase4($event)"
+        >
         </app-interaction-reverse-translation-iterator>
       </ng-template>
       <ng-template [ngSwitchCase]="4">
-        <app-interaction-letter-sorter-iterator [words]="vocabulary" (complete)="completePhase5($event)">
+        <app-interaction-letter-sorter-iterator
+          [words]="vocabulary"
+          (complete)="completePhase5($event)"
+        >
         </app-interaction-letter-sorter-iterator>
       </ng-template>
       <ng-template [ngSwitchCase]="5">
@@ -87,10 +108,20 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of vocabulary">
-              <td>{{ item.word }}</td>
-              <td class="right">{{ item.progress ? item.progress : 0 }} / {{trainingsRequired(item)}}</td>
+              <td>
+                <app-speaker-button class="pull-right" [word]="item.word">
+                </app-speaker-button>
+                {{ item.word }}
+              </td>
               <td class="right">
-                {{ (item.errors ? item.errors : 0) - (item.errorsBefore ? item.errorsBefore : 0)}}
+                {{ item.progress ? item.progress : 0 }} /
+                {{ trainingsRequired(item) }}
+              </td>
+              <td class="right">
+                {{
+                  (item.errors ? item.errors : 0) -
+                    (item.errorsBefore ? item.errorsBefore : 0)
+                }}
               </td>
             </tr>
           </tbody>
@@ -99,7 +130,6 @@
           Завершить тренировку
         </button>
       </ng-template>
-
     </div>
   </div>
 </div>
