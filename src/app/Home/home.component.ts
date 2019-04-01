@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { CourseService, VocabularyItem } from '../Services/course.service';
 import { WorkbookService } from '../Services/workbook.service';
 import { ConfigService, Config } from '../Config/config.service';
+import { SpeakerService } from '../Speaker/speaker.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit, OnChanges {
   constructor(
     private courseService: CourseService,
     private workbookService: WorkbookService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private speakerService: SpeakerService
   ) { }
 
   ngOnInit() {

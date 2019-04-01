@@ -14,14 +14,14 @@ export interface AlertMessage {
   providedIn: 'root'
 })
 export class AlertService {
-  private alertFlow = new Subject<AlertMessage>();
+  private alertEmitter = new Subject<AlertMessage>();
 
-  public alerts$: Observable<AlertMessage> = this.alertFlow.asObservable();
+  public alerts$: Observable<AlertMessage> = this.alertEmitter.asObservable();
 
   constructor() { }
 
   add(alert: AlertMessage) {
-    this.alertFlow.next(alert);
+    this.alertEmitter.next(alert);
   }
 
 }

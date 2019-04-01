@@ -21,6 +21,8 @@ import { ReverseTranslationIteratorComponent } from './Interactions/reverse-tran
 import { LetterSorterComponent } from './Interactions/letter-sorter.component';
 import { LetterSorterIteratorComponent } from './Interactions/letter-sorter-iterator.component';
 import { TrainingHistoryComponent } from './TrainingHistory/training-history.component';
+import { SpeakerComponent } from './Speaker/speaker.component';
+import { SpeakerButtonComponent } from './Speaker/speaker-button.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { TrainingHistoryComponent } from './TrainingHistory/training-history.com
     ReverseTranslationIteratorComponent,
     LetterSorterComponent,
     LetterSorterIteratorComponent,
-    TrainingHistoryComponent
+    TrainingHistoryComponent,
+    SpeakerComponent,
+    SpeakerButtonComponent
   ],
   imports: [
     BrowserModule,
