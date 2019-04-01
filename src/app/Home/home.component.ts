@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { CourseService, VocabularyItem } from '../course.service';
-import { WorkbookService } from '../workbook.service';
-import { ConfigService, Config } from '../config.service';
+import { CourseService, VocabularyItem } from '../Services/course.service';
+import { WorkbookService } from '../Services/workbook.service';
+import { ConfigService, Config } from '../Config/config.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

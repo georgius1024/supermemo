@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
-import { VocabularyItem, random } from '../course.service';
+import { VocabularyItem, random } from '../Services/course.service';
 
 @Component({
   selector: 'app-interaction-match',

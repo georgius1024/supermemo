@@ -58,8 +58,8 @@ export class AlertComponent implements OnInit, OnDestroy {
     this.alerts.push(alertMessage);
     if (alertMessage.timeout) {
       setTimeout(() => {
-        this.remove(alertMessage.id)
-      }, alertMessage.timeout)
+        this.remove(alertMessage.id);
+      }, alertMessage.timeout);
     }
   }
 

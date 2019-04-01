@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
-import { VocabularyItem } from '../course.service';
-import { AlertService } from '../alert.service';
+import { VocabularyItem } from '../Services/course.service';
+import { AlertService } from '../Alert/alert.service';
 
 @Component({
   selector: 'app-interaction-translation-iterator',

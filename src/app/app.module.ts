@@ -9,7 +9,7 @@ import { ClarityModule } from '@clr/angular';
 import { SortablejsModule } from 'angular-sortablejs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WordSelectorComponent } from './WordSelector/WordSelector.component';
-import { AlertComponent } from './alert.component';
+import { AlertComponent } from './Alert/alert.component';
 import { TranslationComponent } from './Interactions/translation.component';
 import { HomeComponent } from './Home/home.component';
 import { MatchComponent } from './Interactions/match.component';

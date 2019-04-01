@@ -31,10 +31,9 @@
       <ng-template [ngSwitchCase]="4">
         <h3>Правописание</h3>
         <p>Расставьте буквы в правильном порядке</p>
-
       </ng-template>
       <ng-template [ngSwitchCase]="5">
-        Отчет о тренировке
+        <h3>Итоги тренировки</h3>
       </ng-template>
     </ng-container>
 
@@ -83,21 +82,21 @@
         <table class="table striped auto-width">
           <thead>
             <th>Слово</th>
-            <th>Количество тренировок</th>
+            <th>Прогресс</th>
             <th>Количество ошибок</th>
-            <th>Последняя тренировка</th>
           </thead>
           <tbody>
             <tr *ngFor="let item of vocabulary">
               <td>{{ item.word }}</td>
               <td class="right">{{ item.progress ? item.progress : 0 }} / {{trainingsRequired(item)}}</td>
-              <td class="right">{{ item.errors }}</td>
-              <td class="right">{{ item.last | date:'dd.MM.yyyy'}}</td>
+              <td class="right">
+                {{ (item.errors ? item.errors : 0) - (item.errorsBefore ? item.errorsBefore : 0)}}
+              </td>
             </tr>
           </tbody>
         </table>
         <button class="btn btn-primary" (click)="closeTraining()">
-          Продолжить
+          Завершить тренировку
         </button>
       </ng-template>
 

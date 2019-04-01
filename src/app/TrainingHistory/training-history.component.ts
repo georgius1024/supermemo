@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { WorkbookService } from '../workbook.service';
-import { VocabularyItem } from '../course.service';
+import { WorkbookService } from '../Services/workbook.service';
+import { VocabularyItem } from '../Services/course.service';
 
 @Component({
   selector: 'app-training-history',

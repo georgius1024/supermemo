@@ -1,8 +1,8 @@
 import { Component, Output, OnInit, OnChanges, EventEmitter } from '@angular/core';
-import { VocabularyItem } from '../course.service';
-import { WorkbookService } from '../workbook.service';
-import { AlertService } from '../alert.service';
-import { ConfigService, Config } from '../config.service';
+import { VocabularyItem } from '../Services/course.service';
+import { WorkbookService } from '../Services/workbook.service';
+import { AlertService } from '../Alert/alert.service';
+import { ConfigService, Config } from '../Config/config.service';
 
 @Component({
   selector: 'app-training',
@@ -29,7 +29,13 @@ export class TrainingComponent implements OnInit, OnChanges {
   }
 
   start() {
-    this.vocabulary = this.workbookService.getLessTrained(this.config.trainingLessonWordsQuantity);
+    this.vocabulary = this
+      .workbookService
+      .getLessTrained(this.config.trainingLessonWordsQuantity)
+      .map((item: VocabularyItem) => {
+        item.errorsBefore = item.errors;
+        return item;
+      });
     this.phase = 0;
     this.matchPassed = false;
     this.active = true;

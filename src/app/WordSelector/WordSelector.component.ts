@@ -1,7 +1,7 @@
 import { Input, Output, Component, OnInit, EventEmitter } from '@angular/core';
-import { AlertService } from '../alert.service';
-import { CourseService, VocabularyItem } from '../course.service';
-import { WorkbookService } from '../workbook.service';
+import { AlertService } from '../Alert/alert.service';
+import { CourseService, VocabularyItem } from '../Services/course.service';
+import { WorkbookService } from '../Services/workbook.service';
 
 @Component({
   selector: 'app-word-selector',

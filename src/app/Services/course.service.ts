@@ -8,6 +8,7 @@ export interface VocabularyItem {
   translation: string;
   progress?: number;
   errors?: number;
+  errorsBefore?: number;
   last?: any;
   completed?: boolean;
 }

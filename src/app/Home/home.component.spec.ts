@@ -8,7 +8,7 @@ import { HomeComponent } from './home.component';
 import { TrainingHistoryComponent } from '../TrainingHistory/training-history.component';
 import { WordSelectorComponent } from '../WordSelector/WordSelector.component';
 import { TrainingComponent } from '../Training/training.component';
-import { AlertComponent } from '../alert.component';
+import { AlertComponent } from '../Alert/alert.component';
 import { TranslationComponent } from '../Interactions/translation.component';
 import { ReverseTranslationComponent } from '../Interactions/reverse-translation.component';
 import { MatchComponent } from '../Interactions/match.component';

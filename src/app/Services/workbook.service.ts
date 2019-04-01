@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { VocabularyItem, random, itemNotInList } from './course.service';
 const storageKey = 'supermemo-workbook';
 
-function lessTrained(a: VocabularyItem, b: VocabularyItem) {
-  return (a.progress || 0) - (b.progress || 0) || random();
-}
 function fuzzyLessTrained(a: VocabularyItem, b: VocabularyItem) {
   if ((random() + 0.5) > 0.3) {
     // 70% - верный порядок
@@ -53,7 +50,6 @@ export class WorkbookService {
   public getPortion(quantity: number, filter: any): VocabularyItem[] {
     return this.vocabulary
       .filter(filter)
-      .filter(filter)
       .sort(random)
       .slice(0, quantity);
   }
@@ -63,8 +59,7 @@ export class WorkbookService {
       .filter(notCompleted)
       .sort(fuzzyLessTrained)
       .slice(0, quantity)
-      .sort(random)
-      ;
+      .sort(random);
   }
 
   public getAll(): VocabularyItem[] {

@@ -8,7 +8,7 @@ import { SortablejsModule } from 'angular-sortablejs';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Home/home.component';
 import { ConfigComponent } from './Config/config.component';
-import { AlertComponent } from './alert.component';
+import { AlertComponent } from './Alert/alert.component';
 import { TrainingHistoryComponent } from './TrainingHistory/training-history.component';
 import { WordSelectorComponent } from './WordSelector/WordSelector.component';
 import { TrainingComponent } from './Training/training.component';

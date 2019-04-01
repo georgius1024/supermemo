@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
-import { CourseService, VocabularyItem, random } from '../course.service';
+import { CourseService, VocabularyItem, random } from '../Services/course.service';
 const numberOfOptions = 5;
 @Component({
   selector: 'app-interaction-translation',

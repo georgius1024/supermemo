@@ -39,8 +39,7 @@ describe('CourseService', () => {
 
     service.isLoaded$.subscribe(
       () => {
-        /* tslint-disable-next-line */
-        expect(service.vocabulary).toEqual(expected, 'expected vocabulary')
+        expect(service.getPortion(1)).toEqual(expected, 'expected vocabulary')
         expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
       },
       fail
